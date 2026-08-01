@@ -148,3 +148,5 @@ jobs:
         run: |
           IMAGE_REF="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}"
           cosign sign --yes "$IMAGE_REF"
+              if: always()
+             run: docker push ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
